@@ -3,21 +3,28 @@
     <ul class="wat-cf">
       <li class="first"><%%= link_to "#{t("web-app-theme.list", :default => "List")}", <%= controller_routing_path %>_path  %></li>
       <li><%%= link_to "#{t("web-app-theme.new", :default => "New")}", new_<%= singular_controller_routing_path %>_path %></li>
-      <li class="active"><%%= link_to "#{t("web-app-theme.show", :default => "Show")}", <%= singular_controller_routing_path %>_path %></li>
+      <li class="active"><%%= link_to "#{t("web-app-theme.show", :default => "Show")}", <%= singular_controller_routing_path %>_path(@<%= model_name.underscore %>) %></li>
     </ul>
-  </div>          
+  </div>
   <div class="content">
+    <h2 class="title"><%%= t("scaffold.detail", :model => <%= model_name %>.model_name.human) %></h2>
     <div class="inner">
-      <% columns.each do |column| %>
-        <p>
-          <b><%%= t("activerecord.attributes.<%= singular_controller_routing_path %>.<%= column.name %>", :default => t("activerecord.labels.<%= column.name %>", :default => "<%= column.name.humanize %>")) %>:</b>
-          <%%= @<%= resource_name %>.<%= column.name %> %>
-        </p>
-      <%- end -%>
+      <table class="table">
+        <tr>
+          <td>ID</td>
+          <td><%%= @<%= model_name.underscore %>.id %></td>
+        </tr>
+        <% columns.each do |column| %>
+        <tr>
+          <td><%%= <%= model_name %>.human_attribute_name(:<%= column.name %>) %></td>
+          <td><%%= @<%= model_name.underscore %>.<%= column.name %> %></td>
+        </tr>
+        <%- end -%>
+      </table>
       <div class="wat-cf">
         <%%= link_to image_tag("web-app-theme/icons/application_edit.png", :alt => "#{t("web-app-theme.edit", :default=> "Edit")}") + " " + t("web-app-theme.edit", :default=> "Edit"), edit_<%= singular_controller_routing_path %>_path(@<%= resource_name %>), :class => "button" %> 
         <%%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.delete", :default=> "Delete")}") + " " + t("web-app-theme.delete", :default => "Delete"), <%= singular_controller_routing_path %>_path(@<%= resource_name %>), :method => "delete", :class => "button", :confirm => "#{t("web-app-theme.confirm", :default => "Are you sure?")}" %>
-      </div>      
+      </div>
     </div>
   </div>
 </div>

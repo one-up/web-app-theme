@@ -1,0 +1,18 @@
+<p><%%= t 'scaffold.confirm_text' %></p>
+<%%= form_for(@<%= model_name.underscore %>, :url => @completed_path) do |f| %>
+  <table class="table">
+  <% columns.each do |column| %>
+    <tr>
+      <td><%%= <%= model_name %>.human_attribute_name(:<%= column.name %>) %></td>
+      <td><%%= @<%= model_name.underscore %>.<%= column.name %> %><%%= f.hidden_field :<%= column.name %> %></td>
+    </tr>
+  <%- end -%>
+  </table>
+
+  <div class="group navform wat-cf">
+    <button class="button" type="submit">
+      <%%= image_tag("web-app-theme/icons/tick.png", :alt => "#{t("web-app-theme.save", :default => "Save")}") %> <%%= t("web-app-theme.save", :default => "Save") %>
+    </button>
+    <%%= link_to image_tag("web-app-theme/icons/cross.png", :alt => "#{t("web-app-theme.cancel", :default => "Cancel")}") + " " + t("web-app-theme.cancel", :default => "Cancel"), :back, :class => "button" %>
+  </div>
+<%% end -%>

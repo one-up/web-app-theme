@@ -30,7 +30,7 @@
           </td>
           <% end -%>
           <td>
-            <%%= <%= resource_name %>.created_at %>
+            <%%= l <%= resource_name %>.created_at %>
           </td>
           <td class="last">
             <%%= link_to "#{t("web-app-theme.show", :default => "Show")}", <%= singular_controller_routing_path %>_path(<%= resource_name %>) %> |

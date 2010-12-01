@@ -88,12 +88,15 @@ module WebAppTheme
     def generate_views
       views = {
         'crud' => {
-          'view_tables.html.erb'  => File.join('app/views', @controller_file_path, "index.html.#{options.engine}"),
-          'view_new.html.erb'     => File.join('app/views', @controller_file_path, "new.html.#{options.engine}"),
-          'view_edit.html.erb'    => File.join('app/views', @controller_file_path, "edit.html.#{options.engine}"),
-          'view_form.html.erb'    => File.join('app/views', @controller_file_path, "_form.html.#{options.engine}"),
-          'view_show.html.erb'    => File.join('app/views', @controller_file_path, "show.html.#{options.engine}"),
-          'view_sidebar.html.erb' => File.join('app/views', @controller_file_path, "_sidebar.html.#{options.engine}")
+          'view_tables.html.erb'       => File.join('app/views', @controller_file_path, "index.html.#{options.engine}"),
+          'view_new.html.erb'          => File.join('app/views', @controller_file_path, "new.html.#{options.engine}"),
+          'view_edit.html.erb'         => File.join('app/views', @controller_file_path, "edit.html.#{options.engine}"),
+          'view_form.html.erb'         => File.join('app/views', @controller_file_path, "_form.html.#{options.engine}"),
+          'view_show.html.erb'         => File.join('app/views', @controller_file_path, "show.html.#{options.engine}"),
+          'view_sidebar.html.erb'      => File.join('app/views', @controller_file_path, "_sidebar.html.#{options.engine}"),
+          'view_confirm_new.html.erb'  => File.join('app/views', @controller_file_path, "confirm_new.html.#{options.engine}"),
+          'view_confirm_edit.html.erb' => File.join('app/views', @controller_file_path, "confirm_edit.html.#{options.engine}"),
+          'view_confirm.html.erb'      => File.join('app/views', @controller_file_path, "_confirm.html.#{options.engine}")
         },
         'text' => {
           'view_text.html.erb'    => File.join('app/views', @controller_file_path, "show.html.#{options.engine}"),
