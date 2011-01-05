@@ -37,7 +37,7 @@ module WebAppTheme
   protected
     
     def initialize_views_variables
-      @base_name, @controller_class_path, @controller_file_path, @controller_class_nesting, @controller_class_nesting_depth = extract_modules(controller_path)
+      @base_name, @controller_class_path, @controller_file_path, @controller_dir_path, @controller_class_nesting, @controller_class_nesting_depth = extract_modules(controller_path)
       @controller_routing_path = @controller_file_path.gsub(/\//, '_')
       @model_name = @base_name.singularize unless @model_name
       @model_name = @model_name.camelize
@@ -45,6 +45,10 @@ module WebAppTheme
     
     def controller_routing_path
       @controller_routing_path
+    end
+
+    def controller_dir_path
+      @controller_dir_path
     end
     
     def singular_controller_routing_path
@@ -81,8 +85,10 @@ module WebAppTheme
       name    = modules.pop
       path    = modules.map { |m| m.underscore }
       file_path = (path + [name.underscore]).join('/')
+      dir_path = path.join('/')
+      dir_path.present? and dir_path += '/'
       nesting = modules.map { |m| m.camelize }.join('::')
-      [name, path, file_path, nesting, modules.size]
+      [name, path, file_path, dir_path, nesting, modules.size]
     end
     
     def generate_views
