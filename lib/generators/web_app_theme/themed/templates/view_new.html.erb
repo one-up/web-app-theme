@@ -8,7 +8,7 @@
   <div class="content">
     <h2 class="title"><%%= t("scaffold.new", :model => <%= model_name %>.model_name.human) %></h2>
     <div class="inner">
-      <%%= form_for :<%= model_name.underscore %>, :url => confirm_new_<%= model_name.underscore.pluralize %>_path, :html => { :class => :form } do |f| -%>
+      <%%= form_for :<%= model_name.underscore %>, :url => confirm_new_<%= controller_routing_path.underscore %>_path, :html => { :class => :form } do |f| -%>
         <%%= render :partial => "form", :locals => {:f => f} %>
       <%% end -%>
     </div>
