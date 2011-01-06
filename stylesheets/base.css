@@ -225,6 +225,14 @@ body {
   text-align: right;
 }
 
+div.inner .table tr:nth-child(odd)  {
+  background-color: #eee;
+}
+
+div.inner .table tr:nth-child(even) {
+  background-color: inherit;
+}
+
 /* forms */
 
 input.checkbox {
