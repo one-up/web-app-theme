@@ -11,11 +11,11 @@
       <table class="table">
         <tr>             
           <th class="first">ID</th>
-          <% unless columns.empty? -%>
+          <%- unless columns.empty? -%>
           <th>
             <%%= <%= model_name %>.human_attribute_name(:<%= columns.first.name %>) %>
           </th>
-          <% end -%>
+          <%- end -%>
           <th><%%= t("web-app-theme.created_at", :default => "Created at")  %></th>
           <th class="last">&nbsp;</th>
         </tr>
@@ -24,11 +24,11 @@
           <td>
             <%%= <%= resource_name %>.id %>
           </td>
-          <% unless columns.empty? -%>
+          <%- unless columns.empty? -%>
           <td>
             <%%= link_to <%= resource_name %>.<%= columns.first.name %>, <%= singular_controller_routing_path %>_path(<%= resource_name %>) %>
           </td>
-          <% end -%>
+          <%- end -%>
           <td>
             <%%= l <%= resource_name %>.created_at %>
           </td>
@@ -43,9 +43,9 @@
       <div class="actions-bar wat-cf">
         <div class="actions">
         </div>
-        <% if options.will_paginate %>
+        <%- if options.will_paginate %>
         <%%= will_paginate @<%= plural_resource_name %>  %>
-        <% end %>
+        <%- end %>
       </div>
     </div>
   </div>
