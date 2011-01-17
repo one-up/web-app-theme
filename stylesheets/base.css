@@ -233,6 +233,12 @@ div.inner .table tr:nth-child(even) {
   background-color: inherit;
 }
 
+div.inner .table tr.changed {
+  background: #fdd url('/images/web-app-theme/icons/tick.png') no-repeat right center;
+  color: inherit;
+  font-weight: bold;
+}
+
 /* forms */
 
 input.checkbox {
