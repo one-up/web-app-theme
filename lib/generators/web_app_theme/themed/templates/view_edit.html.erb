@@ -3,13 +3,13 @@
     <ul class="wat-cf">
       <li class="first"><%%= link_to "#{t("web-app-theme.list", :default => "List")}", <%= controller_routing_path %>_path  %></li>
       <li><%%= link_to "#{t("web-app-theme.new", :default => "New")}", new_<%= singular_controller_routing_path %>_path %></li>
-      <li class="active"><%%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_<%= singular_controller_routing_path %>_path(@<%= model_name.underscore %>) %></li>
+      <li class="active"><%%= link_to "#{t("web-app-theme.edit", :default => "Edit")}", edit_<%= singular_controller_routing_path %>_path(@<%= resource_name %>) %></li>
     </ul>
   </div>
   <div class="content">
     <h2 class="title"><%%= t("scaffold.editing", :model => <%= model_name %>.model_name.human) %></h2>
     <div class="inner">
-      <%%= form_for @<%= model_name.underscore  %>, :url => confirm_edit_<%= controller_routing_path.underscore.singularize %>_path(@<%= resource_name %>), :html => { :class => :form } do |f| -%>
+      <%%= form_for @<%= resource_name  %>, :url => confirm_edit_<%= controller_routing_path.underscore.singularize %>_path(@<%= resource_name %>), :html => { :class => :form } do |f| -%>
         <%%= render :partial => "form", :locals => {:f => f} %>
       <%% end -%>
     </div>

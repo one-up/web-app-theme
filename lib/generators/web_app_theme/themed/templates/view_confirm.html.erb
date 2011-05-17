@@ -1,12 +1,12 @@
 <p><%%= t 'scaffold.confirm_text' %></p>
-<%%= form_for(@<%= model_name.underscore %>, :url => (@<%= model_name.underscore %>.new_record? ?
+<%%= form_for(@<%= resource_name %>, :url => (@<%= resource_name %>.new_record? ?
                                                         <%= controller_routing_path.underscore.pluralize %>_path :
-                                                        <%= controller_routing_path.underscore.singularize %>_path(@<%= model_name.underscore %>) )) do |f| %>
+                                                        <%= controller_routing_path.underscore.singularize %>_path(@<%= resource_name %>) )) do |f| %>
   <table class="table">
   <% columns.each do |column| %>
-    <%%= tr_with_changed(@<%= model_name.underscore %>, :<%= column.name %>) %>
+    <%%= tr_with_changed(@<%= resource_name %>, :<%= column.name %>) %>
       <td><%%= <%= model_name %>.human_attribute_name(:<%= column.name %>) %></td>
-      <td><%%= @<%= model_name.underscore %>.<%= column.name %> %><%%= f.hidden_field :<%= column.name %> %></td>
+      <td><%%= @<%= resource_name %>.<%= column.name %> %><%%= f.hidden_field :<%= column.name %> %></td>
     </tr>
   <%- end -%>
   </table>

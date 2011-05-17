@@ -3,7 +3,7 @@
     <ul class="wat-cf">
       <li class="first"><%%= link_to "#{t("web-app-theme.list", :default => "List")}", <%= controller_routing_path %>_path  %></li>
       <li><%%= link_to "#{t("web-app-theme.new", :default => "New")}", new_<%= singular_controller_routing_path %>_path %></li>
-      <li class="active"><%%= link_to "#{t("web-app-theme.show", :default => "Show")}", <%= singular_controller_routing_path %>_path(@<%= model_name.underscore %>) %></li>
+      <li class="active"><%%= link_to "#{t("web-app-theme.show", :default => "Show")}", <%= singular_controller_routing_path %>_path(@<%= resource_name %>) %></li>
     </ul>
   </div>
   <div class="content">
@@ -12,12 +12,12 @@
       <table class="table">
         <tr>
           <td>ID</td>
-          <td><%%= @<%= model_name.underscore %>.id %></td>
+          <td><%%= @<%= resource_name %>.id %></td>
         </tr>
         <% columns.each do |column| %>
         <tr>
           <td><%%= <%= model_name %>.human_attribute_name(:<%= column.name %>) %></td>
-          <td><%%= @<%= model_name.underscore %>.<%= column.name %> %></td>
+          <td><%%= @<%= resource_name %>.<%= column.name %> %></td>
         </tr>
         <%- end -%>
       </table>

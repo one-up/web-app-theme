@@ -64,7 +64,7 @@ module WebAppTheme
     end
     
     def resource_name
-      @model_name.underscore
+      model_name.gsub(/::/, '').underscore
     end
     
     def plural_resource_name
@@ -74,10 +74,12 @@ module WebAppTheme
     #If the ORM is mongoid then use the fields on the class to generate the columns
     def columns
       excluded_column_names = %w[id created_at updated_at]
-       Kernel.const_get(@model_name).columns.reject{|c| excluded_column_names.include?(c.name) }.collect{|c| Rails::Generators::GeneratedAttribute.new(c.name, c.type)}
+      @model_name.split(/::/).inject(Kernel) {|c,name| c.const_get(name) }
+        .columns.reject{|c| excluded_column_names.include?(c.name) }.collect{|c| Rails::Generators::GeneratedAttribute.new(c.name, c.type)}
        
      rescue NoMethodError
-       Kernel.const_get(@model_name).fields.collect{|c| c[1]}.reject{|c| excluded_column_names.include?(c.name) }.collect{|c| Rails::Generators::GeneratedAttribute.new(c.name, c.type.to_s)}
+      @model_name.split(/::/).inject(Kernel) {|c,name| c.const_get(name) }
+         .fields.collect{|c| c[1]}.reject{|c| excluded_column_names.include?(c.name) }.collect{|c| Rails::Generators::GeneratedAttribute.new(c.name, c.type.to_s)}
     end
     
     def extract_modules(name)
